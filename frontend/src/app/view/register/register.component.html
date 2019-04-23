@@ -1,0 +1,49 @@
+<form [formGroup]="registrationForm" (ngSubmit)="register()">
+  {{registrationForm?.value | json}}
+  <hr/>
+  <div [ngClass]="{'has-error': isSubmitted && rf.username.errors }">
+    <label>Username:<input formControlName="username"></label>
+  </div>
+  <div *ngIf="isSubmitted && rf.username.errors">
+    <p *ngIf="rf.username.errors.email">Insert valid e-mail.</p>
+    <p *ngIf="rf.username.errors.required">Username is required.</p>
+  </div>
+
+  <div [ngClass]="{'has-error': isSubmitted && rf.password.errors }">
+    <label>Password<input type="password" formControlName="password"></label>
+  </div>
+  <div *ngIf="isSubmitted && rf.password.errors">
+    <p *ngIf="rf.password.errors.minlength">Password must be at least 4 characters long.</p>
+    <p *ngIf="rf.password.errors.required">Password is required.</p>
+  </div>
+
+  <div [ngClass]="{'has-error': isSubmitted && rf.confirmPassword.errors }">
+    <label>Confirm Password<input type="password" formControlName="confirmPassword"></label>
+  </div>
+  <div *ngIf="isSubmitted && rf.confirmPassword.errors">
+    <p *ngIf="rf.confirmPassword.errors.required">Password confirmation is required.</p>
+    <p *ngIf="rf.confirmPassword.errors.mustMatch">Passwords must match.</p>
+  </div>
+
+  <div [ngClass]="{'has-error': isSubmitted && rf.firstName.errors }">
+    <label>First Name<input formControlName="firstName"></label>
+  </div>
+  <div *ngIf="isSubmitted && rf.firstName.errors">
+    <p *ngIf="rf.firstName.errors.minlength">First name must be at least 3 characters long.</p>
+    <p *ngIf="rf.firstName.errors.required">First name is required.</p>
+  </div>
+
+  <div [ngClass]="{'has-error': isSubmitted && rf.lastName.errors }">
+    <label>Last Name<input formControlName="lastName"></label>
+  </div>
+  <div *ngIf="isSubmitted && rf.lastName.errors">
+    <p *ngIf="rf.lastName.errors.minlength">Last name must be at least 3 characters long.</p>
+    <p *ngIf="rf.lastName.errors.required">Last name is required.</p>
+  </div>
+
+  <button type="submit">Register</button>
+  <button type="reset" (click)="reset()">Reset</button>
+</form>
+<div *ngIf="message != null">{{message}}</div>
+<br>
+<a routerLink="/login">Login</a>

@@ -1,0 +1,22 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+
+  <label [ngClass]="{'has-error': isSubmitted && lf.username.errors }">Username:
+    <input type="email" formControlName="username" placeholder="Username">
+  </label>
+  <div *ngIf="isSubmitted && lf.username.errors">
+    <p *ngIf="lf.username.errors.required">Username required.</p>
+    <p *ngIf="lf.username.errors.email">Insert valid e-mail.</p>
+  </div>
+
+  <label [ngClass]="{'has-error': isSubmitted && lf.password.errors }">Password:
+    <input type="password" formControlName="password" placeholder="Password">
+  </label>
+  <div *ngIf="isSubmitted && lf.password.errors">
+    <p *ngIf="lf.password.errors.required">Password required.</p>
+  </div>
+
+  <button type="submit">Login</button>
+
+  <div *ngIf="message != null">{{message}}</div>
+</form>
+<a routerLink="/register">Register</a>

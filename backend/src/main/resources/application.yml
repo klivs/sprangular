@@ -1,0 +1,12 @@
+server:
+  port: 8088
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: root
+    password: toor
+    driver-class-name: oracle.jdbc.OracleDriver
