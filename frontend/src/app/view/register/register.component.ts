@@ -9,11 +9,18 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-    message = [];
+    message = {
+        success: null,
+        error: null
+    };
     registrationForm: FormGroup;
     isSubmitted: boolean;
 
     constructor(private auth: AuthService, private fb: FormBuilder) {
+    }
+
+    get rf() {
+        return this.registrationForm.controls;
     }
 
     ngOnInit() {
@@ -31,10 +38,6 @@ export class RegisterComponent implements OnInit {
             });
     }
 
-    get rf() {
-        return this.registrationForm.controls;
-    }
-
     register() {
         this.isSubmitted = true;
         if (this.registrationForm.invalid) {
@@ -44,11 +47,11 @@ export class RegisterComponent implements OnInit {
         this.auth.register(this.registrationForm.value)
             .subscribe(
                 value => {
-                    this.message.success = 'Registered successfully';
+                    this.message.success = "Registered successfully";
                     this.message.error = null;
                 },
                 error => {
-                    this.message.error = 'Failed to register.';
+                    this.message.error = "Failed to register.";
                     this.message.success = null;
                 });
     }

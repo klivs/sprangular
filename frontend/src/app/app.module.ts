@@ -17,9 +17,9 @@ import {
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
-    MatFormFieldModule,
+    MatFormFieldModule, MatGridListModule,
     MatIconModule,
-    MatListModule, MatTabsModule
+    MatListModule, MatProgressSpinnerModule, MatTabsModule
 } from "@angular/material";
 import {MatInputModule} from "@angular/material";
 
@@ -46,7 +46,9 @@ import {MatInputModule} from "@angular/material";
         MatIconModule,
         MatDividerModule,
         MatListModule,
-        MatTabsModule
+        MatTabsModule,
+        MatProgressSpinnerModule,
+        MatGridListModule
     ],
     providers: [
         AuthService,
