@@ -12,30 +12,47 @@ import {RegisterComponent} from './view/register/register.component';
 import {AuthService} from './service/auth/auth.service';
 import {NotFoundComponent} from './view/not-found/not-found.component';
 import {ConfigurationService} from './config/configuration.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatListModule, MatTabsModule
+} from "@angular/material";
+import {MatInputModule} from "@angular/material";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    ProtectedResourceComponent,
-    LogoutComponent,
-    RegisterComponent,
-    NotFoundComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule
-  ],
-  providers: [
-    AuthService,
-    ConfigurationService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        ProtectedResourceComponent,
+        LogoutComponent,
+        RegisterComponent,
+        NotFoundComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDividerModule,
+        MatListModule,
+        MatTabsModule
+    ],
+    providers: [
+        AuthService,
+        ConfigurationService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

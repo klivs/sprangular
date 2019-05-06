@@ -1,22 +1,43 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-
-  <label [ngClass]="{'has-error': isSubmitted && lf.username.errors }">Username:
-    <input type="email" formControlName="username" placeholder="Username">
-  </label>
-  <div *ngIf="isSubmitted && lf.username.errors">
-    <p *ngIf="lf.username.errors.required">Username required.</p>
-    <p *ngIf="lf.username.errors.email">Insert valid e-mail.</p>
-  </div>
-
-  <label [ngClass]="{'has-error': isSubmitted && lf.password.errors }">Password:
-    <input type="password" formControlName="password" placeholder="Password">
-  </label>
-  <div *ngIf="isSubmitted && lf.password.errors">
-    <p *ngIf="lf.password.errors.required">Password required.</p>
-  </div>
-
-  <button type="submit">Login</button>
-
-  <div *ngIf="message != null">{{message}}</div>
-</form>
-<a routerLink="/register">Register</a>
+<div class="login-wrapper">
+    <form [formGroup]="loginForm">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Login</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item>
+                        <mat-form-field>
+                            <mat-label [ngClass]="{'has-error': isSubmitted && lf.username.errors }">Username
+                            </mat-label>
+                            <input matInput type="email" formControlName="username" placeholder="username">
+                            <mat-error *ngIf="isSubmitted && lf.username.errors && lf.username.errors.required">Username
+                                required.
+                            </mat-error>
+                            <mat-error *ngIf="isSubmitted && lf.username.errors &&lf.username.errors.email">Insert valid
+                                e-mail.
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field>
+                            <mat-label [ngClass]="{'has-error': isSubmitted && lf.password.errors }">Password
+                            </mat-label>
+                            <input matInput type="password" formControlName="password" placeholder="password">
+                            <mat-error *ngIf="isSubmitted && lf.password.errors && lf.password.errors.required">Password
+                                required.
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-error *ngIf="message != null">{{message}}</mat-error>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button (click)="login()">Login</button>
+                <button mat-button routerLink="/register">Register</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
-      console.log(this.loginForm);
       return;
     }
 
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/protected']);
       },
       error => {
-        console.error(error);
         this.auth.deAuth();
         this.message = 'Login failed!';
       });
