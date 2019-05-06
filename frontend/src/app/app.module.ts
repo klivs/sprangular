@@ -19,9 +19,10 @@ import {
     MatDividerModule,
     MatFormFieldModule, MatGridListModule,
     MatIconModule,
-    MatListModule, MatProgressSpinnerModule, MatTabsModule
+    MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatTabsModule
 } from "@angular/material";
 import {MatInputModule} from "@angular/material";
+import { UserListComponent } from './view/user-list/user-list.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import {MatInputModule} from "@angular/material";
         ProtectedResourceComponent,
         LogoutComponent,
         RegisterComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        UserListComponent
     ],
     imports: [
         BrowserModule,
@@ -48,7 +50,10 @@ import {MatInputModule} from "@angular/material";
         MatListModule,
         MatTabsModule,
         MatProgressSpinnerModule,
-        MatGridListModule
+        MatGridListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule
     ],
     providers: [
         AuthService,

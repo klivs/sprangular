@@ -17,8 +17,6 @@ export class ProtectedResourceComponent implements OnInit {
 
     ngOnInit() {
         this.user = this.auth.user;
-        console.log('--user : ' + this.user);
-        console.log(this.auth);
         this.message = 'You are logged in!';
     }
 

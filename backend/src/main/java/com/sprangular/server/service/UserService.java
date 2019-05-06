@@ -9,12 +9,16 @@ import com.sprangular.server.mapper.UserMapper;
 import com.sprangular.server.model.User;
 import com.sprangular.server.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class UserService {
     
     private UserRepository userRepository;
@@ -43,5 +47,12 @@ public class UserService {
         user.setFirstName(requestDTO.getFirstName());
         user.setLastName(requestDTO.getLastName());
         return userMapper.toDTO(userRepository.save(user));
+    }
+    
+    public List<UserDTO> listUsers() {
+        List<UserDTO> list = new ArrayList<>();
+        userRepository.findAll().forEach(user -> list.add(userMapper.toDTO(user)));
+        log.info("[listUsers] " + list);
+        return list;
     }
 }

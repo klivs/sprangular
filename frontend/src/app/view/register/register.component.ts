@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../service/auth/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
     registrationForm: FormGroup;
     isSubmitted: boolean;
 
-    constructor(private auth: AuthService, private fb: FormBuilder) {
+    constructor(private auth: AuthService, private fb: FormBuilder, private router: Router) {
     }
 
     get rf() {
@@ -47,8 +48,11 @@ export class RegisterComponent implements OnInit {
         this.auth.register(this.registrationForm.value)
             .subscribe(
                 value => {
-                    this.message.success = "Registered successfully";
+                    this.message.success = "Registered successfully!";
                     this.message.error = null;
+                    setTimeout(() => {
+                        this.router.navigate(['/']);
+                    }, 3000);
                 },
                 error => {
                     this.message.error = "Failed to register.";

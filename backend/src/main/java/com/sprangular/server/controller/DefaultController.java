@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.List;
 
 import static com.sprangular.server.Routes.API;
+import static com.sprangular.server.Routes.LIST_USERS;
 import static com.sprangular.server.Routes.LOGIN;
 import static com.sprangular.server.Routes.REGISTER;
 import static com.sprangular.server.Routes.VALIDATE;
@@ -40,5 +42,10 @@ public class DefaultController {
     @PostMapping(REGISTER)
     public UserDTO register(@RequestBody RegistrationRequestDTO registrationDTO) {
         return userService.register(registrationDTO);
+    }
+    
+    @GetMapping(LIST_USERS)
+    public List<UserDTO> listUsers() {
+        return userService.listUsers();
     }
 }

@@ -6,5 +6,6 @@ public interface Routes {
     String LOGIN = "/login";
     String VALIDATE = "/validate";
     String REGISTER = "/register";
+    String LIST_USERS = "/user/list";
     
 }

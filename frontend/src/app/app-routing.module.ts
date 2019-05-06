@@ -7,6 +7,7 @@ import {RegisterComponent} from './view/register/register.component';
 import {LoggedInGuard} from './guard/logged-in/logged-in.guard';
 import {NotFoundComponent} from './view/not-found/not-found.component';
 import {AnonymousGuard} from './guard/anonymous/anonymous.guard';
+import {UserListComponent} from "./view/user-list/user-list.component";
 
 const routes: Routes = [
     {
@@ -33,6 +34,11 @@ const routes: Routes = [
         path: 'register',
         component: RegisterComponent,
         canActivate: [AnonymousGuard]
+    },
+    {
+        path: 'user-list',
+        component: UserListComponent,
+        canActivate: [LoggedInGuard]
     },
     {
         path: '**',
